@@ -6,7 +6,7 @@
 'use strict';
 
 // Constants
-const API_ENDPOINT = 'https://n8n.sitepreviews.dev/webhook/v1/ed2-market-client-tasks';
+const API_ENDPOINT = 'https://ed2m-agency.app.n8n.cloud/webhook/v1/client-tasks';
 const TOAST_DURATION = 3000;
 
 // Global variable to store meeting title
