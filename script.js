@@ -14,6 +14,9 @@ let meetingTitle = '';
 
 let tasks = [];
 
+// Global variable to store attendees
+let attendees = [];
+
 /**
  * Toast Notification System
  * Displays a temporary notification message to the user
@@ -96,6 +99,7 @@ function loadTasksFromURL() {
 
         // Extract tasks array
         const tasksArray = parsed.tasks || parsed;
+        attendees = parsed.attendees || [];
 
         tasks = tasksArray.map((item, index) => ({
             id: Date.now() + index,
@@ -103,6 +107,7 @@ function loadTasksFromURL() {
             owner: item.owner || "",
             descriptions: item.descriptions || ""
         }));
+       
 
         // Display meeting title if available
         displayMeetingTitle();
@@ -202,6 +207,7 @@ async function saveAllTasks() {
     const jsonData = {
         meeting_title: meetingTitle,
         meetingType: globalMeetingType,
+        attendees: attendees, 
         tasks: currentTasks
     };
 
@@ -274,7 +280,8 @@ function addTask() {
         id: Date.now(),
         task: newTask,
         owner: newOwner,
-        descriptions: ""
+        descriptions: "",
+        attendees : ""
     });
 
     // Reset form and close modal
